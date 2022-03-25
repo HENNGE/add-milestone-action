@@ -1,0 +1,15 @@
+name: 'Add milestone'
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches: [main]
+
+jobs:
+  add-milestone:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add milestone
+        uses: HENNGE/add-milestone-action@v1.0.0
+        with:
+          ignore_senders: 'dependabot[bot]'
