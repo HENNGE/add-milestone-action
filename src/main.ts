@@ -29,7 +29,7 @@ async function run(): Promise<void> {
     }
 
     const octo = getOctokit(core.getInput('token'))
-    const useOldest = core.getBooleanInput('add_policy')
+    const useOldest = core.getBooleanInput('use_oldest')
     const {data: milestones} = await octo.rest.issues.listMilestones({
       ...repo,
       state: 'open',
