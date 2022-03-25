@@ -1,11 +1,24 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Add milestone to PR'
+description: 'Add a milestone to a pull request event'
+author: 'HENNGE'
 inputs:
-  milliseconds: # change this
+  token:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'Github token'
+    default: ${{github.token}}
+  ignore_senders:
+    required: false
+    description: 'List of senders to ignore when a pull request is submitted. Sender names should be separated with a comma(,)'
+    default: ''
+  use_oldest:
+    required: false
+    description: 'Will use the oldest milestone if set to true.'
+    default: true
+  fail_on_none:
+    required: false
+    description: 'Should the action fail if a milestone cannot be added'
+    default: true
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
