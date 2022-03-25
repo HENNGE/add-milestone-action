@@ -58,7 +58,7 @@ function run() {
                 }
             }
             const octo = (0, github_1.getOctokit)(core.getInput('token'));
-            const useOldest = core.getBooleanInput('add_policy');
+            const useOldest = core.getBooleanInput('use_oldest');
             const { data: milestones } = yield octo.rest.issues.listMilestones(Object.assign(Object.assign({}, repo), { state: 'open', sort: 'due_on', direction: useOldest ? 'desc' : 'asc' }));
             if (milestones.length === 0) {
                 if (core.getBooleanInput('fail_on_none')) {
